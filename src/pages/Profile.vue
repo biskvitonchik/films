@@ -1,8 +1,10 @@
 <script setup>
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import { ref, computed, onMounted } from 'vue'
 
 const store = useStore()
+const router = useRouter()
 
 const correctLogin = '123'
 const correctPassword = '123'
@@ -14,7 +16,10 @@ const loginUser = () => {
   if (loginInput.value === correctLogin && passwordInput.value === correctPassword) {
     store.commit('login')
     localStorage.setItem('isLoggedIn', 'true')
-    alert('вход выполнен')
+    router.push('/')
+    setTimeout(() => {
+      alert('Вход выполнен')
+    }, 100)
   } else {
     alert('Неверный логин или пароль')
   }
