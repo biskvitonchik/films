@@ -21,7 +21,7 @@ const handleInput = () => delayedSearch()
       <input
         v-model="searchQuery"
         @input="handleInput"
-        class="bg-violet-50 border rounded-md py-2 pl-9 md:pl-11 outline-none focus:border-gray-400"
+        class="bg-violet-50 border rounded-md py-2 pr-2 pl-9 md:pl-11 outline-none focus:border-gray-400"
         type="search"
         placeholder="Поиск по всем..."
       />
