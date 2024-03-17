@@ -39,7 +39,7 @@ onMounted(async () => {
       <img
         v-if="store.getters.isLoggedIn"
         @click="toggleFavoriteFilm"
-        :src="props.isFavorite ? '/like-2.svg' : '/like-1.svg'"
+        :src="props.isFavorite ? '/films/like-2.svg' : '/films/like-1.svg'"
         alt="like"
       />
       <img v-else @click="requestAboutEntry" src="/like-1.svg" alt="like" />
