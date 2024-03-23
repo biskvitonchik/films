@@ -7,8 +7,10 @@ import Pagination from '@/components/Pagination.vue'
 
 const store = useStore()
 const isLoading = ref(true)
+const isSearching = ref(false)
 
 const searchFilm = async (query) => {
+  isSearching.value = !!query
   await store.dispatch('fetchFilmsList', query)
 }
 
@@ -35,6 +37,6 @@ onMounted(async () => {
       <h1>По вашему запросу фильмы не найдены</h1>
     </div>
 
-    <Pagination />
+    <Pagination v-if="!isSearching" />
   </div>
 </template>
