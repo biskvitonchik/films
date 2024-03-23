@@ -1,8 +1,9 @@
 <script setup>
 import { useStore } from 'vuex'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const store = useStore()
+const isLoadingFavoritesList = ref(true)
 
 const clearFavoritesList = async () => {
   try {
@@ -16,6 +17,9 @@ onMounted(async () => {
   await store.dispatch('checkAuthState')
   if (store.getters.isLoggedIn) {
     await store.dispatch('fetchFavoriteFilmsList')
+    isLoadingFavoritesList.value = false
+  } else {
+    isLoadingFavoritesList.value = false
   }
 })
 </script>
@@ -23,7 +27,8 @@ onMounted(async () => {
 <template>
   <div class="flex justify-between">
     <div>
-      <h1 v-if="store.state.favorites != 0" class="mb-5">
+      <h1 v-if="isLoadingFavoritesList" class="mb-5">Загрузка избранных фильмов...</h1>
+      <h1 v-else-if="store.state.favorites != 0" class="mb-5">
         {{
           store.getters.isLoggedIn 
             ? 'Избранные фильмы:' 
