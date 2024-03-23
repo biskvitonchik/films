@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 import CardList from '@/components/CardList.vue'
 import Search from '@/components/Search.vue'
 import Pagination from '@/components/Pagination.vue'
 
 const store = useStore()
+const isLoading = ref(true)
 
 const searchFilm = async (query) => {
   await store.dispatch('fetchFilmsList', query)
@@ -14,14 +15,20 @@ const searchFilm = async (query) => {
 onMounted(async () => {
   await store.dispatch('fetchFavoriteFilmsList')
   await store.dispatch('fetchFilmsList')
+  isLoading.value = false
 })
 </script>
 
 <template>
   <div>
     <Search @search="searchFilm" />
-    <div v-if="store.getters.films.length">
+    
+    <div v-if="!isLoading && store.getters.films.length">
       <CardList :films="store.getters.films" :favorites="store.getters.favorites" />
+    </div>
+
+    <div v-else-if="isLoading">
+      <h2>Загрузка...</h2>
     </div>
 
     <div v-else>
