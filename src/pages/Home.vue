@@ -20,7 +20,14 @@ onMounted(async () => {
 <template>
   <div>
     <Search @search="searchFilm" />
-    <CardList :films="store.getters.films" :favorites="store.getters.favorites" />
+    <div v-if="store.getters.films.length">
+      <CardList :films="store.getters.films" :favorites="store.getters.favorites" />
+    </div>
+
+    <div v-else>
+      <h1>По вашему запросу фильмы не найдены</h1>
+    </div>
+
     <Pagination />
   </div>
 </template>
