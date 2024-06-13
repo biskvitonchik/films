@@ -1,35 +1,100 @@
-# kino
+# Приложение для выбора фильмов
 
-This template should help get you started developing with Vue 3 in Vite.
+## Описание проекта
 
-## Recommended IDE Setup
+Это веб-приложение на Vue 3, которое позволяет пользователям просматривать информацию о фильмах и добавлять их в избранное. Приложение разработано с использованием Vue Router, Vuex, Tailwind CSS и Vite. <br> Избарнные фильмы сохраняются на сервисе [mokky.dev.](mokky.dev)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Функционал
 
-## Customize configuration
+- Просмотр списка фильмов
+- Поиск фильмов по ключевым словам
+- Добавление и удаление фильмов из избранного
+- Пагинация списка фильмов
+- Аутентификация для работы с избранными фильмами
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
 
-```sh
-npm install
-```
+## Установка и запуск проекта
+1. Убедитесь, что у вас установлен Node.js и npm.
+2. Установите зависимости:
+`npm install`
+3. Запустите проект:
+`npm run dev`
 
-### Compile and Hot-Reload for Development
+## Структура проекта
+<pre>
+root
+│
+├── public/
+├── src/
+│   ├── assets/
+│   │   └── main.css
+│   ├── components/
+│   │   ├── CardFilm.vue
+│   │   ├── CardList.vue
+│   │   ├── Footer.vue
+│   │   ├── Header.vue
+│   │   ├── Pagination.vue
+│   │   └── Search.vue
+│   ├── pages/
+│   │   ├──Favorites.vue
+│   │   ├── Home.vue
+│   │   └── Profile.vue
+│   ├── App.vue
+│   ├── main.js
+│   ├── router.js
+│   └── store.js
+└── index.html
+</pre>
 
-```sh
-npm run dev
-```
+- __main.css__
+Использует Tailwind CSS для стилизации компонентов и задает базовые стили для фона и отдельных классов.
 
-### Compile and Minify for Production
+- __CardFilm.vue__
+Компонент для отображения информации о фильме и возможности добавления в избранное.
 
-```sh
-npm run build
-```
+- __CardList.vue__
+Компонент для отображения списка фильмов в виде сетки.
 
-### Lint with [ESLint](https://eslint.org/)
+- __Footer.vue__
+Футер приложения с контактной информацией.
 
-```sh
-npm run lint
-```
+- __Header.vue__
+Хедер приложения с навигацией по страницам.
+
+- __Pagination.vue__
+Компонент для пагинации списка фильмов.
+
+- __Search.vue__
+Компонент для поиска фильмов по ключевым словам.
+
+- __Favorites.vue__
+Страница для отображения избранных фильмов.
+
+- __Home.vue__
+Главная страница приложения, отображающая список фильмов и включающая поиск и пагинацию.
+
+- __Profile.vue__
+Страница для аутентификации пользователя.
+
+- __App.vue__
+Главный компонент приложения, включающий Header, Footer и Router View.
+
+- __main.js__
+Точка входа в приложение, создает и монтирует Vue приложение с использованием Vuex и Vue Router.
+
+- __router.js__
+Конфигурация маршрутизации приложения, определяет пути и компоненты для маршрутов.
+
+- __store.js__
+Конфигурация Vuex хранилища для управления состоянием приложения, включая аутентификацию и работу с избранными фильмами. Используется axios с async/await для взаимодействия с сервисом mokky.dev для сохранения и загрузки избранных фильмов.
+
+## Использованные технологии
+- Vue 3 (Composition API, script setup)
+- Tailwind CSS
+- Vue Router
+- Vuex
+- Axios
+- Async/await
+- Vite 
+
