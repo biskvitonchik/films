@@ -5,7 +5,7 @@
       <li>
         Телеграм: <a href="https://t.me/biskv" class="hover:text-blue-400" target="_blank">biskv</a>
       </li>
-      <li>Номер телефона: +79936302580</li>
+      <li>Номер телефона: +79950422016</li>
     </ul>
   </footer>
 </template>
