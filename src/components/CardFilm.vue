@@ -18,7 +18,7 @@ const toggleFavoriteFilm = async () => {
 }
 
 const requestAboutEntry = () => {
-  alert('Войдите, чтобы добавить фильм в избранное')
+  alert('Войдите в профиль, чтобы добавить фильм в избранное')
 }
 
 onMounted(async () => {
