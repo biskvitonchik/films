@@ -2,13 +2,13 @@
 import { useStore } from 'vuex'
 import { onMounted } from 'vue'
 
-const props = defineProps(['nameRu', 'posterUrl', 'kinopoiskId', 'year', 'isFavorite'])
+const props = defineProps(['nameRu', 'posterUrl', 'kinoId', 'year', 'isFavorite'])
 const store = useStore()
 
 const toggleFavoriteFilm = async () => {
   const film = {
     nameRu: props.nameRu,
-    kinopoiskId: props.kinopoiskId,
+    kinoId: props.kinoId,
     isFavorite: !props.isFavorite,
     year: Number(props.year),
     posterUrl: props.posterUrl
