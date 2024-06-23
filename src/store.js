@@ -28,9 +28,7 @@ const store = createStore({
       state.currentPage = page
     },
     toggleFavorite(state, film) {
-      const index = state.favorites.findIndex(
-        (f) => f.nameRu === film.nameRu && f.year === film.year && f.posterUrl === film.posterUrl
-      )
+      const index = state.favorites.findIndex(f => f.kinoId === film.kinoId)
       if (index === -1) {
         state.favorites.push(film)
       } else {
@@ -76,9 +74,7 @@ const store = createStore({
 
     async toggleFavoriteFilm({ commit, state }, film) {
       try {
-        const existingFilm = state.favorites.find(
-          (f) => f.nameRu === film.nameRu && f.year === film.year && f.posterUrl === film.posterUrl
-        )
+        const existingFilm = state.favorites.find(f => f.kinoId === film.kinoId)
         if (!existingFilm) {
           await axios.post('https://1028066ef1030290.mokky.dev/favorites', film)
         } else {

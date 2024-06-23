@@ -7,16 +7,12 @@ defineProps(['films', 'favorites'])
   <main class="grid grid-cols-2 md:grid-cols-4 gap-5">
     <CardFilm
       v-for="film in films"
-      :key="film.kinopoiskId"
+      :key="film.kinopoiskId || film.filmId"
       :nameRu="film.nameRu"
       :posterUrl="film.posterUrl"
       :year="film.year"
-      :kinopoiskId="film.kinopoiskId"
-      :isFavorite="
-        favorites.some(
-          (f) => f.nameRu === film.nameRu && f.year == film.year && f.posterUrl === film.posterUrl
-        )
-      "
+      :kinoId="film.kinopoiskId || film.filmId"
+      :isFavorite="favorites.some(f => f.kinoId === (film.kinopoiskId || film.filmId))"
     />
   </main>
 </template>
