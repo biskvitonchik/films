@@ -4,7 +4,7 @@ defineProps(['films', 'favorites'])
 </script>
 
 <template>
-  <main class="grid grid-cols-2 md:grid-cols-4 gap-5">
+  <main class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 xl:grid-cols-5 gap-5">
     <CardFilm
       v-for="film in films"
       :key="film.kinopoiskId || film.filmId"
