@@ -5,6 +5,14 @@ import { onMounted, ref } from 'vue'
 const store = useStore()
 const isLoadingFavoritesList = ref(true)
 
+const toggleFavoriteFilm = async (film) => {
+  try {
+    await store.dispatch('toggleFavoriteFilm', film)
+  } catch (error) {
+    console.error('Ошибка при удалении избранного фильма:', error);
+  }
+}
+
 const clearFavoritesList = async () => {
   try {
     await store.dispatch('deleteAllFavoritesList')
@@ -56,9 +64,9 @@ onMounted(async () => {
     <div
       v-for="film in store.getters.favorites"
       :key="film.id"
-      class="md:w-1/4 p-6 w-2/4 bg-violet-50 border border-slate-100 rounded-3xl cursor-pointer hover:-translate-y-2 hover:shadow-xl transition"
+      class="relative md:w-1/4 p-6 w-2/4 bg-violet-50 border border-slate-100 rounded-3xl cursor-pointer hover:-translate-y-2 hover:shadow-xl transition"
     >
-      <div></div>
+      <button class="absolute opacity-80 right-7 top-7 bg-white-100 rounded-3xl hover:bg-red-600" @click="toggleFavoriteFilm(film)"><img src="/minus.svg" alt="Удалить"></button>
       <img class="rounded-3xl" :src="film.posterUrl" alt="image" />
       <div>
         <b class="flex justify-center">{{ film.nameRu }}</b>
